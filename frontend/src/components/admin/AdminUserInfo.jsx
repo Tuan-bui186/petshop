@@ -12,10 +12,10 @@ const AdminUserInfo = ({ user }) => {
   const [deleteUser] = useDeleteUserMutation();
 
   const handleDeleteUser = async () => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
       try {
         await deleteUser(user._id);
-        toast.success("User deleted successfully");
+        toast.success("Người dùng đã được xóa thành công");
         navigator("/admin/users");
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -27,19 +27,19 @@ const AdminUserInfo = ({ user }) => {
     <Card className="user-info p-4">
       <div className="user-avatar">
         <FaUserCircle size={96} className="user-icon" />
-        {user.isAdmin && <div className="admin-label">Admin</div>}
+        {user.isAdmin && <div className="admin-label">Quản Trị Viên</div>}
       </div>
 
-      <label>User name</label>
+      <label>Tên Người Dùng</label>
       <p>{user?.name}</p>
       <label>Email</label>
       <p> {user?.email}</p>
-      <label>User ID</label>
+      <label>ID Người Dùng</label>
       <p>{user?._id}</p>
 
       {shippingAddress && (
         <>
-          <label>Shipping Address</label>
+          <label>Địa Chỉ Giao Hàng</label>
           <p>
             {shippingAddress.firstName} {shippingAddress.lastName}
             <br />
@@ -61,7 +61,7 @@ const AdminUserInfo = ({ user }) => {
           size="sm"
           onClick={handleDeleteUser}
         >
-          Delete User
+          Xóa Người Dùng
         </Button>
       )}
     </Card>

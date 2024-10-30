@@ -7,11 +7,9 @@ import EditProfileModal from "./EditProfileModal";
 
 const AccountInfo = () => {
   const [showResetPassword, setShowResetPassword] = useState(false);
-
   const [showEditProfile, setShowEditProfile] = useState(false);
 
   const { userInfo } = useSelector((state) => state.auth);
-
   const { shippingAddress } = userInfo;
 
   return (
@@ -21,16 +19,16 @@ const AccountInfo = () => {
         {userInfo.isAdmin && <div className="admin-label">Admin</div>}
       </div>
       
-      <label>User name</label>
+      <label>Tên người dùng</label>
       <p>{userInfo?.name}</p>
       <label>Email</label>
       <p> {userInfo?.email}</p>
-      <label>User ID</label>
+      <label>ID người dùng</label>
       <p>{userInfo?._id}</p>
 
       {shippingAddress && (
         <>
-          <label>Shipping Address</label>
+          <label>Địa chỉ giao hàng</label>
           <p>
             {shippingAddress.firstName} {shippingAddress.lastName}
             <br />
@@ -51,7 +49,7 @@ const AccountInfo = () => {
         size="sm"
         onClick={() => setShowEditProfile(true)}
       >
-        Edit Profile
+        Chỉnh sửa hồ sơ
       </Button>
 
       <Button
@@ -60,7 +58,7 @@ const AccountInfo = () => {
         size="sm"
         onClick={() => setShowResetPassword(true)}
       >
-        Reset Password
+        Đặt lại mật khẩu
       </Button>
 
       <EditProfileModal

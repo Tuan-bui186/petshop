@@ -14,10 +14,10 @@ const AdminUsers = () => {
   const [deleteUser] = useDeleteUserMutation();
 
   const handleDeleteUser = async (id) => {
-    if (window.confirm("Are you sure you want to delete this user?")) {
+    if (window.confirm("Bạn có chắc chắn muốn xóa người dùng này không?")) {
       try {
         await deleteUser(id);
-        toast.success("User deleted successfully");
+        toast.success("Người dùng đã được xóa thành công");
         refetch();
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -27,16 +27,16 @@ const AdminUsers = () => {
 
   return (
     <div className="mt-3">
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <p>Đang tải...</p>}
       {error && <p>{error}</p>}
       {users && (
         <Table striped hover responsive className="table-style">
           <thead>
             <tr>
-              <th>User ID</th>
-              <th>Name</th>
+              <th>ID Người Dùng</th>
+              <th>Tên</th>
               <th>Email</th>
-              <th>Admin</th>
+              <th>Quản Trị Viên</th>
               <th></th>
             </tr>
           </thead>

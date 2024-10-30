@@ -52,7 +52,7 @@ const Product = ({ product }) => {
             disabled={!isInStock}
             onClick={addToCartHandler}
           >
-            Add
+            Thêm vào giỏ
           </Button>
         </Card.Text>
       </Card.Body>

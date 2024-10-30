@@ -12,10 +12,10 @@ const SalesScreen = () => {
 
   return (
     <div className="pb-5">
-      <PageTitle title="Sales" />
+      <PageTitle title="Khuyến Mãi" />
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error?.data?.message || error.error}</p>}
+      {isLoading && <p>Đang tải...</p>}
+      {error && <p>Lỗi: {error?.data?.message || error.error}</p>}
 
       {data?.products.length === 0 ? (
         <NoProductsFound />

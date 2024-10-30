@@ -21,11 +21,11 @@ const OrderPayment = () => {
       {isSaved ? (
         <div>
           <p>
-            <span className="fw-bold text-black-50">Saved Method: </span>
+            <span className="fw-bold text-black-50">Phương thức đã lưu: </span>
             {paymentMethod}
           </p>
           <small className="text-black-50">
-            * Will add other payment methods in the future
+            * Sẽ thêm các phương thức thanh toán khác trong tương lai
           </small>
 
           {/* <div className="d-flex">
@@ -35,7 +35,7 @@ const OrderPayment = () => {
               className="rounded-pill px-4 ms-auto"
               onClick={() => setIsSaved(false)}
             >
-              Edit
+              Chỉnh sửa
             </Button>
           </div> */}
         </div>
@@ -62,7 +62,7 @@ const OrderPayment = () => {
               size="sm"
               className="rounded-pill px-4 ms-auto"
             >
-              Save
+              Lưu
             </Button>
           </div>
         </Form>

@@ -7,73 +7,65 @@ const AboutScreen = () => {
     <>
       <Row>
         <Col md={{ span: 10, offset: 1 }} lg={{ span: 8, offset: 2 }}>
-          <img src={image} alt="About Us" className="w-100 rounded-3 mt-4" />
+          <img src={image} alt="Về Chúng Tôi" className="w-100 rounded-3 mt-4" />
         </Col>
-        <HomeTitle title="About Us" />
+        <HomeTitle title="Về Chúng Tôi" />
       </Row>
       <Row className="about-content">
         <Col md={{ span: 10, offset: 1 }} lg={{ span: 8, offset: 2 }}>
           <p>
-            This website is a project I used to practice full-stack programming.
-            I just make up the fllowing content to fill the space XD.
+            Trang web này là một dự án tôi sử dụng để thực hành lập trình full-stack.
+            Tôi chỉ bịa ra nội dung dưới đây để lấp đầy khoảng trống XD.
           </p>
-          <h4>About</h4>
+          <h4>Về Chúng Tôi</h4>
           <p>
-            Petizen is a company that is passionate about pets and their owners.
-            We believe that pets are part of the family and deserve the best
-            possible care. That's why we offer a wide range of high-quality pet
-            products, from food and treats to toys and accessories. We also
-            provide helpful information and resources to help you keep your pet
-            happy and healthy.
+            Petizen là một công ty đam mê với thú cưng và chủ của chúng.
+            Chúng tôi tin rằng thú cưng là một phần của gia đình và xứng đáng nhận được sự chăm sóc tốt nhất.
+            Đó là lý do chúng tôi cung cấp một loạt các sản phẩm thú cưng chất lượng cao, từ thức ăn và đồ ăn vặt đến đồ chơi và phụ kiện.
+            Chúng tôi cũng cung cấp thông tin và tài nguyên hữu ích để giúp bạn giữ cho thú cưng của mình hạnh phúc và khỏe mạnh.
           </p>
-          <h4>Our Mission</h4>
+          <h4>Sứ Mệnh Của Chúng Tôi</h4>
           <p>
-            Our mission is to provide pet owners with everything they need to
-            give their pets the best possible life. We strive to offer products
-            that are safe, healthy, and affordable. We also want to be a
-            valuable resource for pet owners, providing them with the
-            information and support they need to care for their pets.
+            Sứ mệnh của chúng tôi là cung cấp cho chủ thú cưng mọi thứ họ cần để
+            mang lại cuộc sống tốt nhất cho thú cưng của họ. Chúng tôi nỗ lực cung cấp các sản phẩm
+            an toàn, lành mạnh và phải chăng. Chúng tôi cũng muốn trở thành một
+            tài nguyên quý giá cho các chủ thú cưng, cung cấp cho họ thông tin và hỗ trợ
+            họ cần để chăm sóc thú cưng.
           </p>
-          <h4>Our Values</h4>
-          <p>We are committed to the following values:</p>
+          <h4>Giá Trị Của Chúng Tôi</h4>
+          <p>Chúng tôi cam kết với các giá trị sau:</p>
           <ul>
             <li>
-              Quality: We only offer high-quality products that we believe in.
+              Chất lượng: Chúng tôi chỉ cung cấp các sản phẩm chất lượng cao mà chúng tôi tin tưởng.
             </li>
             <li>
-              Safety: We are committed to the safety of pets and their owners.
+              An toàn: Chúng tôi cam kết đảm bảo an toàn cho thú cưng và chủ của chúng.
             </li>
             <li>
-              Affordability: We want to make our products accessible to all pet
-              owners.
+              Giá cả phải chăng: Chúng tôi muốn làm cho các sản phẩm của mình trở nên dễ tiếp cận với tất cả các chủ thú cưng.
             </li>
             <li>
-              Education: We believe that pet owners should have access to the
-              information they need to care for their pets.
+              Giáo dục: Chúng tôi tin rằng các chủ thú cưng nên có quyền truy cập vào thông tin họ cần để chăm sóc thú cưng của mình.
             </li>
             <li>
-              Community: We are committed to building a strong community of pet
-              owners.
+              Cộng đồng: Chúng tôi cam kết xây dựng một cộng đồng mạnh mẽ của các chủ thú cưng.
             </li>
           </ul>
-          <h4>Our Team</h4>
+          <h4>Đội Ngũ Của Chúng Tôi</h4>
           <p>
-            Our team of pet lovers is dedicated to providing you with the best
-            possible service. We have a wealth of knowledge about pets and their
-            care, and we are always happy to help you find the right products
-            for your pet.
+            Đội ngũ yêu thú cưng của chúng tôi cam kết cung cấp cho bạn dịch vụ tốt nhất có thể.
+            Chúng tôi có nhiều kiến thức về thú cưng và cách chăm sóc của chúng,
+            và luôn sẵn lòng giúp bạn tìm những sản phẩm phù hợp cho thú cưng của mình.
           </p>
-          <h4>Our Commitment to You</h4>
+          <h4>Cam Kết Của Chúng Tôi Đối Với Bạn</h4>
           <p>
-            We are committed to providing you with the best possible products,
-            service, and resources. We want to help you give your pet the best
-            possible life.
+            Chúng tôi cam kết cung cấp cho bạn những sản phẩm, dịch vụ và tài nguyên tốt nhất có thể.
+            Chúng tôi muốn giúp bạn mang lại cuộc sống tốt nhất cho thú cưng của mình.
           </p>
-          <h4>Join the Family</h4>
+          <h4>Gia Nhập Gia Đình</h4>
           <p>
-            We invite you to join the Petizen family. We are committed to
-            providing you with everything you need to give your pet the best
-            possible life.
+            Chúng tôi mời bạn gia nhập gia đình Petizen.
+            Chúng tôi cam kết cung cấp cho bạn mọi thứ bạn cần để mang lại cuộc sống tốt nhất cho thú cưng của mình.
           </p>
         </Col>
       </Row>

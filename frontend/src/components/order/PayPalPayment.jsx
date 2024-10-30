@@ -51,7 +51,7 @@ const PayPalPayment = ({ order, onPaid }) => {
   }
 
   function onError(err) {
-    toast.error("Failed to pay with PayPal");
+    toast.error("Thanh toán bằng PayPal thất bại");
   }
 
   function onApprove(data, actions) {
@@ -64,17 +64,17 @@ const PayPalPayment = ({ order, onPaid }) => {
   const paymentHandler = async ({ orderId, details }) => {
     try {
       await payOrder({ orderId, details });
-      toast.success("Order is paid");
+      toast.success("Đơn hàng đã được thanh toán");
       onPaid();
     } catch (error) {
       console.error(error);
-      toast.error("Payment failed");
+      toast.error("Thanh toán không thành công");
       throw error;
     }
   };
 
   const markPaidHandler = async () => {
-    if (!window.confirm("Are you sure you want to mark this order as paid?")) {
+    if (!window.confirm("Bạn có chắc chắn muốn đánh dấu đơn hàng này là đã thanh toán không?")) {
       return;
     }
     await paymentHandler({ orderId: order._id, details: { payer: {} } });
@@ -83,9 +83,9 @@ const PayPalPayment = ({ order, onPaid }) => {
   return (
     <ListGroup>
       <ListGroup.Item className="pt-3">
-        {loadingPay && <p>Loading pay</p>}
+        {loadingPay && <p>Đang tải thông tin thanh toán</p>}
         {isPending ? (
-          <p>isPending</p>
+          <p>Đang chờ xử lý</p>
         ) : (
           <PayPalButtons
             createOrder={createPayPalOrder}
@@ -95,15 +95,15 @@ const PayPalPayment = ({ order, onPaid }) => {
         )}
         <small>
           <span style={{ wordBreak: "break-all" }}>
-            Test account: sb-yj643q30574991@personal.example.com
+            Tài khoản thử nghiệm: sb-yj643q30574991@personal.example.com
           </span>
           <br />
-          Password: Rj^%1t+E
+          Mật khẩu: Rj^%1t+E
         </small>
       </ListGroup.Item>
       <ListGroup.Item>
         <div>
-          <small>TEST ONLY: Mark order as paid without Paypal.</small>
+          <small>CHỈ DÀNH CHO THỬ NGHIỆM: Đánh dấu đơn hàng là đã thanh toán mà không cần PayPal.</small>
         </div>
         <Button
           variant="outline-secondary"
@@ -111,7 +111,7 @@ const PayPalPayment = ({ order, onPaid }) => {
           onClick={markPaidHandler}
           size="sm"
         >
-          Mark Order as Paid
+          Đánh dấu đơn hàng là đã thanh toán
         </Button>
       </ListGroup.Item>
     </ListGroup>

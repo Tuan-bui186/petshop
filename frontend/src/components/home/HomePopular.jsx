@@ -16,14 +16,14 @@ const HomePopular = () => {
 
   return (
     <>
-      <HomeTitle title="Most Popular" />
+      <HomeTitle title="Phổ biến" />
 
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error?.data?.message || error.error}</p>
       ) : data?.products.length === 0 ? (
-        <p>No products found</p>
+        <p>Không tìm thấy sản phẩm nào</p>
       ) : (
         data?.products && (
           <Row>
@@ -39,7 +39,7 @@ const HomePopular = () => {
       <Row className="mt-1 pb-2 text-center">
         <Link to="/products">
           <Button className="rounded-pill px-5 fw-bold">
-            <span className="me-2">Shop All Products</span>
+            <span className="me-2">Tất cả sản phẩm</span>
             <FaArrowRight />
           </Button>
         </Link>

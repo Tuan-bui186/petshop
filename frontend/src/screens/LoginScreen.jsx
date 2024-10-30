@@ -36,7 +36,7 @@ const LoginScreen = () => {
       dispatch(setCredentials({ ...res }));
       navigator(redirect);
     } catch (error) {
-      toast.error(error?.data?.message || error?.error || "Unknown Error");
+      toast.error(error?.data?.message || error?.error || "Lỗi không xác định");
     }
   };
 
@@ -47,7 +47,7 @@ const LoginScreen = () => {
       <Row className="justify-content-md-center py-5 my-3">
         <Col xs={12} md={6} lg={5} xl={4}>
           <Card className="px-4 pb-4 pt-3 rounded shadow" border="light">
-            <PageTitle title="Sign In" />
+            <PageTitle title="Đăng Nhập" />
             <Form onSubmit={submitHandler} className="d-grid">
               <Form.Group controlId="email">
                 <Form.Label>Email</Form.Label>
@@ -61,7 +61,7 @@ const LoginScreen = () => {
               </Form.Group>
 
               <Form.Group controlId="password" className="mt-3">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Mật khẩu</Form.Label>
                 <Form.Control
                   type="password"
                   value={password}
@@ -78,25 +78,25 @@ const LoginScreen = () => {
                 disabled={isFormInvalid}
               >
                 {isLoading && <Loader />}
-                <span className="ms-2">Sign In</span>
+                <span className="ms-2">Đăng Nhập</span>
               </Button>
             </Form>
 
             <Row className="py-3">
               <Col>
-                New Customer?{" "}
+                Khách hàng mới?{" "}
                 <Link
                   to={redirect ? `/register?redirect=${redirect}` : `/register`}
                   className="text-primary"
                 >
-                  Register here
+                  Đăng ký tại đây
                 </Link>
               </Col>
             </Row>
           </Card>
         </Col>
         <Col xs={12} md={6} lg={5} xl={4} className="pt-3 text-center">
-          <img src={signInImg} alt="a dog says welcome back" width={380} />
+          <img src={signInImg} alt="Một chú chó nói chào mừng trở lại" width={380} />
         </Col>
       </Row>
     </Container>

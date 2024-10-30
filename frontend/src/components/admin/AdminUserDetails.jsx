@@ -16,12 +16,12 @@ const AdminUserDetails = () => {
         <Link to="/admin/users" className="text-primary back-link fs-5 me-1">
           <FaAngleLeft />
         </Link>
-        User Details
+        Thông Tin Người Dùng
       </h6>
 
-      {isLoading && <p>Loading...</p>}
+      {isLoading && <p>Đang tải...</p>}
 
-      {error && <p>Error: {error?.data?.message || error.error}</p>}
+      {error && <p>Lỗi: {error?.data?.message || error.error}</p>}
 
       {user && (
         <Row className="justify-content-center py-4">

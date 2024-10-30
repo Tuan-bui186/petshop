@@ -16,14 +16,14 @@ const HomeSales = () => {
 
   return (
     <>
-      <HomeTitle title="On Sales" />
+      <HomeTitle title="Đang khuyến mại" />
 
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error?.data?.message || error.error}</p>
       ) : data?.products.length === 0 ? (
-        <p>No products found</p>
+        <p>không tìm thấy sản phẩm nào</p>
       ) : (
         data?.products && (
           <Row>
@@ -39,7 +39,7 @@ const HomeSales = () => {
       <Row className="mt-1 pb-5 text-center">
         <Link to="/sales">
           <Button className="rounded-pill px-5 fw-bold">
-            <span className="me-2">View More</span>
+            <span className="me-2">Xem thêm</span>
             <FaArrowRight />
           </Button>
         </Link>

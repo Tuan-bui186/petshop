@@ -5,23 +5,23 @@ import { Link } from "react-router-dom";
 const OrdersTable = ({ isInAdmin, orders, isLoading, error }) => {
   return (
     <>
-      <h6 className="fw-bold text-primary">Purchase History</h6>
+      <h6 className="fw-bold text-primary">Lịch sử mua hàng</h6>
 
       {isLoading ? (
-        <p>Loading Purchase History...</p>
+        <p>Đang tải lịch sử mua hàng...</p>
       ) : error ? (
-        <p>Error: {error?.data?.message || error.error}</p>
+        <p>Lỗi: {error?.data?.message || error.error}</p>
       ) : orders?.length === 0 ? (
-        <p>No purchase history found.</p>
+        <p>Không tìm thấy lịch sử mua hàng.</p>
       ) : (
         <Table striped hover responsive className="table-style">
           <thead>
             <tr>
               <th>ID</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>NGÀY</th>
+              <th>TỔNG CỘNG</th>
+              <th>ĐÃ THANH TOÁN</th>
+              <th>ĐÃ GIAO</th>
               <th></th>
             </tr>
           </thead>
@@ -54,7 +54,7 @@ const OrdersTable = ({ isInAdmin, orders, isLoading, error }) => {
                     }
                     className="text-primary"
                   >
-                    Details
+                    Chi tiết
                   </Link>
                 </td>
               </tr>

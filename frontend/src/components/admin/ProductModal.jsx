@@ -146,13 +146,13 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
     <Modal show={show} onHide={onHide} size="lg">
       <Modal.Header closeButton>
         <Modal.Title>
-          {isCreate ? "Create Product" : "Edit Product"}
+          {isCreate ? "Tạo Sản Phẩm" : "Chỉnh Sửa Sản Phẩm"}
         </Modal.Title>
       </Modal.Header>
       <Form validated={validated} onSubmit={submitHandler}>
         <Modal.Body>
           {!isCreate && (
-            <p className="text-secondary fs-6  mb-4">
+            <p className="text-secondary fs-6 mb-4">
               ID: {product && product._id}
             </p>
           )}
@@ -160,7 +160,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
           <Row>
             <Col>
               <Input
-                label="Name *"
+                label="Tên *"
                 controlId="name"
                 type="text"
                 onChange={(event) =>
@@ -170,7 +170,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
                 required
               />
               <Input
-                label="Price *"
+                label="Giá *"
                 controlId="price"
                 type="number"
                 placeholder="0.00"
@@ -185,7 +185,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
               <Form.Check
                 type="switch"
                 id="isPublished"
-                label="is Published"
+                label="Đã Xuất Bản"
                 checked={enteredValues.isPublished}
                 className="mb-2 published-switch"
                 onChange={(event) =>
@@ -195,7 +195,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
               <Form.Check
                 type="switch"
                 id="isPopular"
-                label="is Popular"
+                label="Nổi Bật"
                 className="popular-switch"
                 checked={enteredValues.isPopular}
                 onChange={(event) =>
@@ -205,14 +205,14 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
               <Form.Check
                 type="switch"
                 id="isOnSale"
-                label="is On Sale"
+                label="Đang Khuyến Mãi"
                 checked={enteredValues.isOnSale}
                 onChange={(event) =>
                   handleInputChange("isOnSale", event.target.checked)
                 }
               />
               <Input
-                label="Sale price"
+                label="Giá Khuyến Mãi"
                 controlId="salePrice"
                 type="number"
                 placeholder="0.00"
@@ -228,7 +228,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
           <Row>
             <Col>
               <Input
-                label="Count in Stock *"
+                label="Số Lượng Trong Kho *"
                 controlId="countInStock"
                 type="number"
                 onChange={(event) =>
@@ -240,7 +240,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
             </Col>
             <Col>
               <Form.Label>
-                <small className="text-black-50 fw-bold">Category</small>
+                <small className="text-black-50 fw-bold">Danh Mục</small>
               </Form.Label>
               <div key="inline-radio">
                 {CATEGORY_TYPES.map((category) => (
@@ -265,7 +265,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
           <Row>
             <Col>
               <Input
-                label="Image"
+                label="Hình Ảnh"
                 controlId="image"
                 type="file"
                 onChange={fileUploadHandler}
@@ -282,7 +282,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
 
             <Col>
               <Input
-                label="description *"
+                label="Mô Tả *"
                 controlId="Description"
                 type="text"
                 inputAs="textarea"
@@ -304,7 +304,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
               className="ms-auto px-5 rounded-pill"
               disabled={isDisabledBtn}
             >
-              Create
+              Tạo
             </Button>
           ) : (
             <Button
@@ -312,7 +312,7 @@ const ProductModal = ({ show, isCreate, onHide, product }) => {
               className="ms-auto px-5 rounded-pill"
               disabled={isDisabledBtn}
             >
-              Save
+              Lưu
             </Button>
           )}
         </Modal.Footer>

@@ -19,7 +19,7 @@ const SearchInput = () => {
     <Form onSubmit={submitHandler}>
       <InputGroup>
         <Form.Control
-          placeholder="Search Products..."
+          placeholder="Tìm kiếm sản phẩm..."
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           className="search-input"

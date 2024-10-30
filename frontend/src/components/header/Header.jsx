@@ -82,10 +82,10 @@ const Header = () => {
         <ShippingMessage />
         <Container className="gap-4 fw-bold header-text pt-2">
           <Nav>
-            <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/products">Products</Nav.Link>
-            <Nav.Link href="/sales">Sales</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
+            <Nav.Link href="/">Trang chủ</Nav.Link>
+            <Nav.Link href="/products">Sản phẩm</Nav.Link>
+            <Nav.Link href="/sales">Khuyến mại</Nav.Link>
+            <Nav.Link href="/about">Giới thiệu</Nav.Link>
           </Nav>
 
           <Navbar.Brand href="/" className="mx-auto">

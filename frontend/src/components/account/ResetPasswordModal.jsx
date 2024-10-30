@@ -18,18 +18,19 @@ const ResetPasswordModal = ({ show, onClose }) => {
       [identifier]: value,
     }));
   }
+  
   const [updatePassword, { isLoading }] = useUserPasswordMutation();
 
   const resetPasswordHandler = async (e) => {
     e.preventDefault();
 
     if (enteredValues.password === enteredValues.currentPassword) {
-      toast.error("New password cannot be the same as the current password");
+      toast.error("Mật khẩu mới không thể giống với mật khẩu hiện tại");
       return;
     }
 
     if (enteredValues.password !== enteredValues.confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error("Mật khẩu không khớp");
       return;
     }
 
@@ -38,7 +39,7 @@ const ResetPasswordModal = ({ show, onClose }) => {
         currentPassword: enteredValues.currentPassword,
         password: enteredValues.password,
       }).unwrap();
-      toast.success("Password updated successfully");
+      toast.success("Mật khẩu đã được cập nhật thành công");
       handleReset();
       onClose();
     } catch (err) {
@@ -62,14 +63,14 @@ const ResetPasswordModal = ({ show, onClose }) => {
   return (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Reset Password</Modal.Title>
+        <Modal.Title>Đặt lại mật khẩu</Modal.Title>
       </Modal.Header>
       <Form onSubmit={resetPasswordHandler}>
         <Modal.Body>
           <Input
             type="password"
             controlId="currentPassword"
-            label="Current password"
+            label="Mật khẩu hiện tại"
             value={enteredValues.currentPassword}
             onChange={(e) =>
               handleInputChange("currentPassword", e.target.value)
@@ -79,7 +80,7 @@ const ResetPasswordModal = ({ show, onClose }) => {
           <Input
             type="password"
             controlId="newPassword"
-            label="Current password"
+            label="Mật khẩu mới"
             value={enteredValues.password}
             onChange={(e) => handleInputChange("password", e.target.value)}
             required
@@ -87,7 +88,7 @@ const ResetPasswordModal = ({ show, onClose }) => {
           <Input
             type="password"
             controlId="confirmPassword"
-            label="Confirm new password"
+            label="Xác nhận mật khẩu mới"
             value={enteredValues.confirmPassword}
             onChange={(e) =>
               handleInputChange("confirmPassword", e.target.value)
@@ -101,7 +102,7 @@ const ResetPasswordModal = ({ show, onClose }) => {
             className="rounded-pill px-4"
             onClick={onClose}
           >
-            Cancel
+            Hủy
           </Button>
           <Button
             type="submit"
@@ -110,7 +111,7 @@ const ResetPasswordModal = ({ show, onClose }) => {
             disabled={isLoading || formInvalid}
           >
             {isLoading && <Loader />}
-            Save
+            Lưu
           </Button>
         </Modal.Footer>
       </Form>

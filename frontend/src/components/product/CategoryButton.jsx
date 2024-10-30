@@ -7,11 +7,11 @@ const CategoryButton = () => {
   const { keyword, category: urlCategory, sort } = useParams();
   const getCategoryBtnTitle = () => {
     if (urlCategory) {
-      return `Category: ${
+      return `Danh mục: ${
         urlCategory.charAt(0).toUpperCase() + urlCategory.slice(1)
       }`;
     }
-    return "Select Category";
+    return "Chọn danh mục";
   };
 
   const redirectHandler = (category) => {
@@ -29,7 +29,7 @@ const CategoryButton = () => {
         onClick={() => redirectHandler("")}
         active={!urlCategory}
       >
-        All
+        Tất cả
       </Dropdown.Item>
       {CATEGORY_TYPES.map((category) => (
         <Dropdown.Item

@@ -38,10 +38,10 @@ const ProductScreen = () => {
         className="mb-2 d-flex align-items-center"
       >
         <FaAngleLeft />
-        <span className="ms-2">Back</span>
+        <span className="ms-2">Quay lại</span>
       </button>
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error?.data?.message || error.error}</p>}
+      {isLoading && <p>Đang tải...</p>}
+      {error && <p>Lỗi: {error?.data?.message || error.error}</p>}
       {product && (
         <Row className="justify-content-md-center">
           <Col md={4} lg={4} xl={3} className="mb-4">
@@ -67,7 +67,7 @@ const ProductScreen = () => {
 
               <ListGroup.Item>
                 <Row className="align-items-center">
-                  <Col>Price:</Col>
+                  <Col>Giá:</Col>
                   <Col>
                     {product.isOnSale ? (
                       <span>
@@ -84,14 +84,14 @@ const ProductScreen = () => {
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Status:</Col>
-                  <Col>{isInStock ? "In Stock" : "Out of Stock"}</Col>
+                  <Col>Tình trạng:</Col>
+                  <Col>{isInStock ? "Còn hàng" : "Hết hàng"}</Col>
                 </Row>
               </ListGroup.Item>
               {isInStock && (
                 <ListGroup.Item>
                   <Row>
-                    <Col>Qty:</Col>
+                    <Col>Số lượng:</Col>
                     <Col>
                       <select
                         value={qty}
@@ -114,12 +114,12 @@ const ProductScreen = () => {
                   type="button"
                   disabled={!isInStock}
                 >
-                  Add to Cart
+                  Thêm vào giỏ hàng
                 </Button>
               </ListGroup.Item>
               <ListGroup.Item>
                 <small className="mb-1 fw-bold text-black-50">
-                  Description:
+                  Mô tả:
                 </small>
                 <div style={{ whiteSpace: "pre-line" }}>
                   {product.description}

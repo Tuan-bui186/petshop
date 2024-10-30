@@ -18,7 +18,7 @@ const AdminScreen = () => {
 
   return (
     <div>
-      <PageTitle title="Admin Dashboard" />
+      <PageTitle title="Bảng Điều Khiển Quản Trị" />
       <Nav
         variant="tabs"
         defaultActiveKey="orders"
@@ -27,17 +27,17 @@ const AdminScreen = () => {
       >
         <Nav.Item>
           <Nav.Link href="/admin/orders" eventKey="orders">
-            Orders
+            Đơn Hàng
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="users" href="/admin/users">
-            Users
+            Người Dùng
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
           <Nav.Link eventKey="products" href="/admin/products">
-            Products
+            Sản Phẩm
           </Nav.Link>
         </Nav.Item>
       </Nav>

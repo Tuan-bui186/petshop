@@ -36,10 +36,10 @@ const AdminProducts = () => {
   };
 
   const deleteProductHandler = async (id) => {
-    if (window.confirm("Are you sure you want to delete this product?")) {
+    if (window.confirm("Bạn có chắc chắn muốn xóa sản phẩm này không?")) {
       try {
         await deleteProduct(id);
-        toast.success("Product deleted successfully");
+        toast.success("Sản phẩm đã được xóa thành công");
         refetch();
       } catch (err) {
         toast.error(err?.data?.message || err.error);
@@ -54,26 +54,26 @@ const AdminProducts = () => {
           className="btn btn-primary ms-auto rounded-pill px-4"
           onClick={showCreateModalHandler}
         >
-          Create Product
+          Tạo Sản Phẩm
         </Button>
       </div>
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Đang tải...</p>
       ) : error ? (
-        <p>Error: {error?.data?.message || error.error}</p>
+        <p>Lỗi: {error?.data?.message || error.error}</p>
       ) : data?.products.length === 0 ? (
-        <p>No products found</p>
+        <p>Không tìm thấy sản phẩm</p>
       ) : (
         <Table striped hover responsive className="table-style">
           <thead>
             <tr>
-              <th>Image</th>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Tags</th>
-              <th>In Stock</th>
-              <th>Category</th>
-              <th>Published</th>
+              <th>Hình Ảnh</th>
+              <th>Tên Sản Phẩm</th>
+              <th>Giá</th>
+              <th>Thẻ</th>
+              <th>Còn Hàng</th>
+              <th>Danh Mục</th>
+              <th>Xuất Bản</th>
               <th></th>
             </tr>
           </thead>
@@ -140,14 +140,14 @@ const AdminProducts = () => {
         </Table>
       )}
 
-      {/* Create Product */}
+      {/* Tạo Sản Phẩm */}
       <ProductModal
         show={showCreateModal}
         isCreate
         onHide={closeCreateModalHandler}
       />
 
-      {/* Edit Product */}
+      {/* Chỉnh Sửa Sản Phẩm */}
       <ProductModal
         show={showEditModal}
         product={selectedProduct}

@@ -24,7 +24,7 @@ const AllProductsScreen = () => {
 
   return (
     <div className="pb-5 products-list">
-      <PageTitle title="All Products" />
+      <PageTitle title="Tất Cả Sản Phẩm" />
       <Row>
         <Col sm="12" md="6" className="mb-4">
           <SearchInput />
@@ -37,8 +37,8 @@ const AllProductsScreen = () => {
         </Col>
       </Row>
 
-      {isLoading && <p>Loading...</p>}
-      {error && <p>Error: {error?.data?.message || error.error}</p>}
+      {isLoading && <p>Đang tải...</p>}
+      {error && <p>Lỗi: {error?.data?.message || error.error}</p>}
 
       {data?.products.length === 0 ? (
         <NoProductsFound />

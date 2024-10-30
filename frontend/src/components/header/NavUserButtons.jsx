@@ -32,20 +32,20 @@ const NavUserButtons = () => {
           {userInfo.isAdmin && (
             <>
               <NavDropdown.Item href="/admin/orders">
-                Admin dashboard
+              Bảng điều khiển quản trị
               </NavDropdown.Item>
               <NavDropdown.Divider />
             </>
           )}
-          <NavDropdown.Item href="/account">Account</NavDropdown.Item>
+          <NavDropdown.Item href="/account">Tài Khoản</NavDropdown.Item>
           <NavDropdown.Item onClick={logoutHandler}>
-            <span className="text-primary">Sign out</span>
+            <span className="text-primary">Đăng xuất</span>
           </NavDropdown.Item>
         </NavDropdown>
       ) : (
         <Nav.Link href="/login">
           <Button className="rounded-pill px-3 btn-primary" size="sm">
-            <span>Sign in</span>
+            <span>Đăng nhập</span>
           </Button>
         </Nav.Link>
       )}

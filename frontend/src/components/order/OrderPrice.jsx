@@ -11,25 +11,25 @@ const OrderPrice = ({ isInCart }) => {
       <ListGroup.Item>
         <Row>
           <Col>
-            Subtotal <br></br>({cart.itemsNumberText})
+            Tổng phụ <br></br>({cart.itemsNumberText})
           </Col>
           <Col className="text-end">${cart.itemsPrice}</Col>
         </Row>
       </ListGroup.Item>
       <ListGroup.Item>
         <Row>
-          <Col>Shipping</Col>
+          <Col>Vận chuyển</Col>
           <Col className="text-end">
-            {cart.shippingPrice > 0 ? `$${cart.shippingPrice}` : "Free"}
+            {cart.shippingPrice > 0 ? `$${cart.shippingPrice}` : "Miễn phí"}
           </Col>
         </Row>
       </ListGroup.Item>
       <ListGroup.Item>
         <Row>
-          <Col>Tax</Col>
+          <Col>Thuế</Col>
           <Col className="text-end">
             {isInCart ? (
-              <span className="text-black-50">Calculated at checkout</span>
+              <span className="text-black-50">Tính vào lúc thanh toán</span>
             ) : (
               `$${cart.taxPrice}`
             )}
@@ -38,7 +38,7 @@ const OrderPrice = ({ isInCart }) => {
       </ListGroup.Item>
       <ListGroup.Item>
         <Row className="fs-5 fw-bold">
-          <Col>{isInCart ? "Estimated total" : "Total"}</Col>
+          <Col>{isInCart ? "Tổng ước tính" : "Tổng cộng"}</Col>
           <Col className="text-end">${displayPrice}</Col>
         </Row>
       </ListGroup.Item>

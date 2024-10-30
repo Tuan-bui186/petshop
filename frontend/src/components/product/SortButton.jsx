@@ -5,13 +5,14 @@ import { redirectProductSearch } from "../../utils/navigationUtils";
 
 const SortButton = () => {
   const { keyword, category, sort: urlSort } = useParams();
+  
   const getCategoryBtnTitle = () => {
     if (urlSort) {
       const currentSort = SORT_TYPES.find((sort) => sort.value === urlSort);
       const currentSortLabel = currentSort?.label;
-      return `Sort: ${currentSortLabel}`;
+      return `Sắp xếp: ${currentSortLabel}`;
     }
-    return "Sort: Newest";
+    return "Sắp xếp: Mới nhất";
   };
 
   const redirectHandler = (sort) => {

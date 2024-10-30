@@ -39,7 +39,7 @@ const ReviewOrderScreen = () => {
   const placeOrderHandler = async () => {
     const isNoItemsInCart = cartItems.length === 0;
     if (isNoItemsInCart) {
-      toast.error("Your cart is empty");
+      toast.error("Giỏ hàng của bạn đang trống");
       return;
     }
 
@@ -48,7 +48,7 @@ const ReviewOrderScreen = () => {
       shippingAddress.isSaved &&
       Object.values(shippingAddress).every((val) => Boolean(val));
     if (!isAddressValid) {
-      toast.error("Please save shipping address");
+      toast.error("Vui lòng lưu địa chỉ giao hàng");
       return;
     }
 
@@ -62,11 +62,11 @@ const ReviewOrderScreen = () => {
         taxPrice: cart.taxPrice,
         totalPrice: cart.totalPrice,
       }).unwrap();
-      toast.success("Order created successfully");
+      toast.success("Đơn hàng đã được tạo thành công");
       setOrder(res);
     } catch (err) {
       console.error(err);
-      toast.error("Failed to create order");
+      toast.error("Tạo đơn hàng thất bại");
     }
   };
   const orderIsCreated = Object.keys(order).length > 0;
@@ -84,7 +84,7 @@ const ReviewOrderScreen = () => {
         <span className="text-decoration-line-through text-black-50">
           ${item.price}
         </span>{" "}
-        ${item.salePrice} x{item.qty} = $
+        ${item.salePrice} x{item.qty} =
         {(item.qty * item.salePrice).toFixed(2)}
       </>
     ) : (
@@ -101,13 +101,13 @@ const ReviewOrderScreen = () => {
 
   return (
     <>
-      <PageTitle title="Review Order" />
+      <PageTitle title="Xem Đơn Hàng" />
 
       <Row className="pt-2 pb-5">
         <Col md={7} lg={8}>
           <Card>
             <Card.Header>
-              <h4 className="fs-5 fw-bold mb-0 text-black-50">Order Items</h4>
+              <h4 className="fs-5 fw-bold mb-0 text-black-50">Mặt hàng đơn hàng</h4>
             </Card.Header>
             <Card.Body>
               {cartItems.length > 0 && (
@@ -146,7 +146,7 @@ const ReviewOrderScreen = () => {
           <Card className="mt-4">
             <Card.Header>
               <h4 className="fs-5 fw-bold mb-0 text-black-50">
-                Shipping Address
+                Địa chỉ giao hàng
               </h4>
             </Card.Header>
             <Card.Body>
@@ -156,7 +156,7 @@ const ReviewOrderScreen = () => {
 
           <Card className="my-4">
             <Card.Header>
-              <h4 className="fs-5 fw-bold mb-0 text-black-50">Payment</h4>
+              <h4 className="fs-5 fw-bold mb-0 text-black-50">Thanh toán</h4>
             </Card.Header>
             <Card.Body>
               <OrderPayment />
@@ -168,25 +168,25 @@ const ReviewOrderScreen = () => {
           <Card className="py-2">
             <ListGroup variant="flush">
               <OrderPrice />
-              
+
               <ListGroup.Item>
                 <Button
                   className="btn-block rounded-pill px-4 mt-2 mb-2"
                   disabled={isDisabledOrderBtn}
                   onClick={placeOrderHandler}
                 >
-                  Place Order for ${cart.totalPrice}
+                  Đặt hàng với giá ${cart.totalPrice}
                 </Button>
               </ListGroup.Item>
 
               {orderIsCreated && (
                 <ListGroup.Item>
                   <div className="px-1 pt-3 pb-2">
-                    <p className="fs-6 fw-bold mb-0">Order Created</p>
+                    <p className="fs-6 fw-bold mb-0">Đơn hàng đã được tạo</p>
                     <small>
-                      Order ID: {order?._id}
+                      Mã đơn hàng: {order?._id}
                       <br />
-                      Use the button below to pay with PayPal.
+                      Sử dụng nút bên dưới để thanh toán bằng PayPal.
                     </small>
                   </div>
                   <PayPalPayment order={order} onPaid={onPaidHandler} />

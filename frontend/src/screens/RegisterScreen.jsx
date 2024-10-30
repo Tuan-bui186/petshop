@@ -46,7 +46,7 @@ const RegisterScreen = () => {
         if (currentForm.password !== currentForm.confirmPassword) {
           return {
             ...currentForm,
-            errorMessage: "Passwords do not match",
+            errorMessage: "Mật khẩu không khớp",
           };
         } else {
           return {
@@ -65,7 +65,7 @@ const RegisterScreen = () => {
       dispatch(setCredentials({ ...res }));
       navigator(redirect);
     } catch (error) {
-      toast.error(error?.data?.message || error?.error || "Unknown Error");
+      toast.error(error?.data?.message || error?.error || "Lỗi không xác định");
     }
   };
 
@@ -80,10 +80,10 @@ const RegisterScreen = () => {
       <Row className="justify-content-md-center py-5 my-3">
         <Col xs={12} md={6} lg={5} xl={4}>
           <Card className="pt-3 pb-4 px-4 rounded shadow" border="light">
-            <PageTitle title="Sign Up" />
+            <PageTitle title="Đăng Ký" />
             <Form onSubmit={submitHandler} className="d-grid">
               <Form.Group controlId="username">
-                <Form.Label>User name</Form.Label>
+                <Form.Label>Tên người dùng</Form.Label>
                 <Form.Control
                   name="name"
                   type="text"
@@ -107,7 +107,7 @@ const RegisterScreen = () => {
               </Form.Group>
 
               <Form.Group controlId="password" className="mt-3">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Mật khẩu</Form.Label>
                 <Form.Control
                   name="password"
                   type="password"
@@ -119,7 +119,7 @@ const RegisterScreen = () => {
               </Form.Group>
 
               <Form.Group controlId="confirm-password" className="mt-3">
-                <Form.Label> Confirm Password</Form.Label>
+                <Form.Label>Xác nhận mật khẩu</Form.Label>
                 <Form.Control
                   name="confirmPassword"
                   type="password"
@@ -137,7 +137,7 @@ const RegisterScreen = () => {
                 disabled={isFormInvalid}
               >
                 {isLoading && <Loader />}
-                <span className="ms-2">Sign Up</span>
+                <span className="ms-2">Đăng Ký</span>
               </Button>
             </Form>
             {form.errorMessage && (
@@ -146,19 +146,19 @@ const RegisterScreen = () => {
 
             <Row className="py-3">
               <Col>
-                Already have an account?{" "}
+                Đã có tài khoản?{" "}
                 <Link
                   to={redirect ? `/login?redirect=${redirect}` : `/login`}
                   className="text-primary"
                 >
-                  Sign in
+                  Đăng nhập
                 </Link>
               </Col>
             </Row>
           </Card>
         </Col>
         <Col xs={12} md={6} lg={5} xl={4} className="pt-5 text-center">
-          <img src={signUpImg} alt="a dog says join us now" width={380} />
+          <img src={signUpImg} alt="Chó nói tham gia ngay" width={380} />
         </Col>
       </Row>
     </Container>

@@ -9,7 +9,7 @@ const HomeCatergories = () => {
 
   return (
     <>
-      <HomeTitle title="Shop by Category" />
+      <HomeTitle title="Mua theo danh mục" />
       <Row className="d-flex align-items-center">
         <Col xs={6} sm={6} md={4}>
           <img

@@ -12,25 +12,25 @@ const OrderSuccessScreen = () => {
       <Row className="py-5">
         <Col xs={12} className="text-center pt-5 pb-4">
           <div className="order-success">
-            <img src={dogImg} alt="Dog Smile" className="dog-img" />
-            <img src={thankYouGif} alt="Thank you" className="thank-you" />
+            <img src={dogImg} alt="Chó cười" className="dog-img" />
+            <img src={thankYouGif} alt="Cảm ơn bạn" className="thank-you" />
           </div>
-          <h2 className="mt-4 fw-bold fs-3">Your order has been placed!</h2>
-          <p>Order ID: {orderId} </p>
+          <h2 className="mt-4 fw-bold fs-3">Đơn hàng của bạn đã được đặt!</h2>
+          <p>Mã đơn hàng: {orderId} </p>
           <Row className="py-2">
             <Col>
               <Button
                 onClick={() => navigate("/")}
                 className="rounded-pill px-5"
               >
-                Continue Shopping
+                Tiếp tục mua sắm
               </Button>
               <Button
                 onClick={() => navigate("/account")}
                 className="rounded-pill px-4 ms-3"
                 variant="outline-primary"
               >
-                View Order in Account
+                Xem đơn hàng trong tài khoản
               </Button>
             </Col>
           </Row>

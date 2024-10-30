@@ -9,22 +9,22 @@ const AdminOrders = () => {
   return (
     <div className="mt-3">
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Đang tải...</p>
       ) : error ? (
         <p>{error}</p>
       ) : !orders || orders.length === 0 ? (
-        <p>No orders found.</p>
+        <p>Không tìm thấy đơn hàng nào.</p>
       ) : (
         orders.length > 0 && (
           <Table striped hover responsive className="table-style">
             <thead>
               <tr>
-                <th>Order ID</th>
-                <th>User</th>
-                <th>Date</th>
-                <th>Total</th>
-                <th>Paid</th>
-                <th>Delivered</th>
+                <th>ID đơn hàng</th>
+                <th>Người dùng</th>
+                <th>Thời gian</th>
+                <th>Tổng</th>
+                <th>Thanh toán</th>
+                <th>Giao hàng</th>
                 <th></th>
               </tr>
             </thead>
@@ -51,7 +51,7 @@ const AdminOrders = () => {
                   </td>
                   <td>
                     <Link to={`/admin/orders/${order._id}`} className="text-primary">
-                      Details
+                      Chi tiết
                     </Link>
                   </td>
                 </tr>

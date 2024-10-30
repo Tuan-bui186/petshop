@@ -46,7 +46,7 @@ const EditProfileModal = ({ show, onClose }) => {
     e.preventDefault();
 
     if (!userName) {
-      toast.error("User name is required");
+      toast.error("Tên người dùng là bắt buộc");
       return;
     }
 
@@ -55,7 +55,7 @@ const EditProfileModal = ({ show, onClose }) => {
         (val) => val.trim().length > 0
       );
       if (!isValidate) {
-        toast.error("All fields are required");
+        toast.error("Tất cả các trường đều bắt buộc");
         return;
       }
     }
@@ -65,7 +65,7 @@ const EditProfileModal = ({ show, onClose }) => {
         name: userName,
         shippingAddress: isAddAddress ? enteredAddress : null,
       }).unwrap();
-      toast.success("Profile updated successfully");
+      toast.success("Cập nhật hồ sơ thành công");
       dispatch(setCredentials({ ...res }));
       if (!isAddAddress) {
         resetAddress();
@@ -92,13 +92,13 @@ const EditProfileModal = ({ show, onClose }) => {
   return (
     <Modal show={show} onHide={onClose}>
       <Modal.Header closeButton>
-        <Modal.Title>Edit Profile</Modal.Title>
+        <Modal.Title>Chỉnh sửa hồ sơ</Modal.Title>
       </Modal.Header>
       <Form onSubmit={resetPasswordHandler}>
         <Modal.Body>
-          <h5 className="fw-bold mt-3 mb-3">Basic Info</h5>
+          <h5 className="fw-bold mt-3 mb-3">Thông tin cơ bản</h5>
           <p>
-            <span className="fw-bold text-black-50">User ID: </span>
+            <span className="fw-bold text-black-50">ID người dùng: </span>
             {userInfo?._id}
           </p>
           <p>
@@ -110,7 +110,7 @@ const EditProfileModal = ({ show, onClose }) => {
             <Input
               type="text"
               controlId="userName"
-              label="User name"
+              label="Tên người dùng"
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               required
@@ -119,7 +119,7 @@ const EditProfileModal = ({ show, onClose }) => {
 
           <Form.Check
             type="radio"
-            label="Add Default Shipping Address (optional)"
+            label="Thêm địa chỉ giao hàng mặc định (tùy chọn)"
             id="shippingAddress"
             checked={isAddAddress}
             onClick={() => setIsAddAddress((prev) => !prev)}
@@ -133,7 +133,7 @@ const EditProfileModal = ({ show, onClose }) => {
                   <Input
                     type="text"
                     controlId="firstName"
-                    label="First name"
+                    label="Họ"
                     value={enteredAddress.firstName}
                     onChange={(e) =>
                       handleInputChange("firstName", e.target.value)
@@ -144,7 +144,7 @@ const EditProfileModal = ({ show, onClose }) => {
                   <Input
                     type="text"
                     controlId="lastName"
-                    label="Last name"
+                    label="Tên"
                     value={enteredAddress.lastName}
                     onChange={(e) =>
                       handleInputChange("lastName", e.target.value)
@@ -158,7 +158,7 @@ const EditProfileModal = ({ show, onClose }) => {
                   <Input
                     type="text"
                     controlId="address"
-                    label="Address"
+                    label="Địa chỉ"
                     value={enteredAddress.address}
                     onChange={(e) =>
                       handleInputChange("address", e.target.value)
@@ -169,7 +169,7 @@ const EditProfileModal = ({ show, onClose }) => {
                   <Input
                     type="text"
                     controlId="city"
-                    label="City"
+                    label="Thành phố"
                     value={enteredAddress.city}
                     onChange={(e) => handleInputChange("city", e.target.value)}
                   />
@@ -180,7 +180,7 @@ const EditProfileModal = ({ show, onClose }) => {
                   <Input
                     type="text"
                     controlId="postalCode"
-                    label="Postal Code"
+                    label="Mã bưu điện"
                     value={enteredAddress.postalCode}
                     onChange={(e) =>
                       handleInputChange("postalCode", e.target.value)
@@ -191,7 +191,7 @@ const EditProfileModal = ({ show, onClose }) => {
                   <Input
                     type="text"
                     controlId="country"
-                    label="Country"
+                    label="Quốc gia"
                     value={enteredAddress.country}
                     onChange={(e) =>
                       handleInputChange("country", e.target.value)
@@ -208,7 +208,7 @@ const EditProfileModal = ({ show, onClose }) => {
             className="rounded-pill px-4"
             onClick={onClose}
           >
-            Cancel
+            Hủy
           </Button>
           <Button
             type="submit"
@@ -217,7 +217,7 @@ const EditProfileModal = ({ show, onClose }) => {
             disabled={formInvalid}
           >
             {isLoading && <Loader />}
-            Save
+            Lưu
           </Button>
         </Modal.Footer>
       </Form>

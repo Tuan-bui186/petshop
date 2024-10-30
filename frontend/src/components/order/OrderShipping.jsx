@@ -23,10 +23,10 @@ const OrderShipping = () => {
 
   const [isSaved, setIsSaved] = useState(shippingAddress.isSaved || false);
 
-  const getLable = (key) => {
+  const getLabel = (key) => {
     return key
-      .replace(/([A-Z])/, " $1") // Add space before any uppercase letter
-      .replace(/^./, (str) => str.toUpperCase()); // Capitalize the first letter
+      .replace(/([A-Z])/, " $1") // Thêm khoảng trắng trước bất kỳ ký tự viết hoa nào
+      .replace(/^./, (str) => str.toUpperCase()); // Viết hoa chữ cái đầu tiên
   };
 
   const inputChangeHandler = (key, value) => {
@@ -59,7 +59,7 @@ const OrderShipping = () => {
               return (
                 <Col md={6} key={`entered${key}`} className="mb-2">
                   <span className="fw-bold text-black-50">
-                    {getLable(key) + ": "}
+                    {getLabel(key) + ": "}
                   </span>
                   {enteredValues[key]}
                 </Col>
@@ -74,7 +74,7 @@ const OrderShipping = () => {
               className="rounded-pill px-4 ms-auto"
               onClick={editHandler}
             >
-              Edit
+              Chỉnh sửa
             </Button>
           </div>
         </>
@@ -86,7 +86,7 @@ const OrderShipping = () => {
                 <Col md={6} key={key}>
                   <Input
                     as={Col}
-                    label={getLable(key)}
+                    label={getLabel(key)}
                     controlId={key}
                     type="text"
                     onChange={(event) =>
@@ -109,7 +109,7 @@ const OrderShipping = () => {
               className="rounded-pill px-4 ms-auto"
               disabled={isFormValid}
             >
-              Save
+              Lưu
             </Button>
           </div>
         </Form>
