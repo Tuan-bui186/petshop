@@ -1,13 +1,14 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Product from "../models/productModel.js";
 
-// @desc    Fetch all products
+// @desc    Lấy danh sách sản phẩm
 // @route   GET /api/products
-// @access  Public
 const getProducts = asyncHandler(async (req, res) => {
+  // Lấy kích thước trang và số trang từ query params
   const pageSize = req.query.pageSize || undefined;
   const page = Number(req.query.pageNumber) || 1;
 
+  // Lấy các tham số tìm kiếm từ query params
   const {
     keyword: keywordQuery,
     isPublished,
@@ -17,6 +18,7 @@ const getProducts = asyncHandler(async (req, res) => {
     sort: sortQuery,
   } = req.query;
 
+  // Tạo đối tượng từ khóa tìm kiếm
   const keyword = {
     ...(keywordQuery && {
       name: {
@@ -30,6 +32,7 @@ const getProducts = asyncHandler(async (req, res) => {
     ...(isOnSale && { isOnSale }),
   };
 
+  // Các tùy chọn sắp xếp
   const sortOptions = {
     "createdAt:desc": { createdAt: -1 },
     "createdAt:asc": { createdAt: 1 },
@@ -37,24 +40,30 @@ const getProducts = asyncHandler(async (req, res) => {
     "price:asc": { price: 1 },
   };
 
+  // Mặc định sắp xếp theo ngày tạo giảm dần
   let sortParam = { createdAt: -1 };
 
+  // Kiểm tra xem có tùy chọn sắp xếp hợp lệ không
   if (sortQuery && sortOptions[sortQuery]) {
     sortParam = sortOptions[sortQuery];
   }
 
+  // Đếm số lượng sản phẩm phù hợp với từ khóa tìm kiếm
   const count = await Product.countDocuments({ ...keyword });
+  // Tìm tất cả sản phẩm dựa trên từ khóa tìm kiếm, sắp xếp và phân trang
   const products = await Product.find({ ...keyword })
     .sort(sortParam)
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
+  // Trả về danh sách sản phẩm, số trang và tổng số trang
   res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
-// @desc    Create a product
+
+
+// @desc    Tạo mới 1 sản phẩm
 // @route   POST /api/products
-// @access  Private/Admin
 const createProduct = asyncHandler(async (req, res) => {
   const {
     name,
@@ -83,30 +92,29 @@ const createProduct = asyncHandler(async (req, res) => {
   });
 
   const createdProduct = await product.save();
-
   res.send({
-    message: "Product created successfully",
+    message: "Sản phẩm đã được tạo thành công.",
     product: createdProduct,
   });
 });
 
-// @desc    Fetch a single product
+
+
+// @desc   Lấy một sản phẩm 
 // @route   GET /api/products/:id
-// @access  Public
 const getProductById = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
-
   if (product) {
     res.json(product);
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Sản phẩm không tồn tại");
   }
 });
 
-// @desc    Update a product
+
+// @desc    chỉnh sửa 1 sản phẩm
 // @route   PUT /api/products/:id
-// @access  Private/Admin
 const updateProduct = asyncHandler(async (req, res) => {
   const {
     name,
@@ -141,25 +149,26 @@ const updateProduct = asyncHandler(async (req, res) => {
   const updatedProduct = await product.save();
 
   res.send({
-    message: "Product updated successfully",
+    message: "Cập nhật sản phẩm thành công",
     product: updatedProduct,
   });
 });
 
-// @desc    Delete a product
+
+
+// @desc    Xóa 1 sản phẩm
 // @route   DELETE /api/products/:id
-// @access  Private/Admin
 const deleteProduct = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
-
   if (product) {
     await Product.deleteOne({ _id: req.params.id });
-    res.json({ message: "Product removed" });
+    res.json({ message: "Sản phẩm đã được xóa." });
   } else {
     res.status(404);
-    throw new Error("Product not found");
+    throw new Error("Sản phẩm không tồn tại.");
   }
 });
+
 
 export {
   getProducts,

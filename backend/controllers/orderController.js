@@ -2,9 +2,8 @@ import asyncHandler from "../middleware/asyncHandler.js";
 import Order from "../models/orderModel.js";
 import Product from "../models/productModel.js";
 
-// @desc    Create new order
+// @desc    Tạo đơn hàng mới.
 // @route   POST /api/orders
-// @access  Private
 const addOrderItems = asyncHandler(async (req, res) => {
   const {
     orderItems,
@@ -18,111 +17,121 @@ const addOrderItems = asyncHandler(async (req, res) => {
 
   if (orderItems && orderItems.length === 0) {
     res.status(400);
-    throw new Error("No order items");
+    throw new Error("Không có sản phẩm");
     return;
   }
 
+
+
+  // Tạo một đơn hàng mới
   const order = new Order({
     orderItems: orderItems.map((item) => ({
       ...item,
-      product: item._id,
-      _id: undefined,
+      product: item._id, // Thêm ID sản phẩm vào đơn hàng
+      _id: undefined, // Xóa ID gốc để không bị trùng lặp
     })),
-    user: req.user._id,
-    shippingAddress,
-    paymentMethod,
-    itemsPrice,
-    taxPrice,
-    shippingPrice,
-    totalPrice,
+    user: req.user._id, // ID người dùng
+    shippingAddress, // Địa chỉ giao hàng
+    paymentMethod, // Phương thức thanh toán
+    itemsPrice, // Tổng giá trị sản phẩm
+    taxPrice, // Thuế
+    shippingPrice, // Phí giao hàng
+    totalPrice, // Tổng giá đơn hàng
   });
 
   const createdOrder = await order.save();
-
-  res.status(201).json(createdOrder);
+  res.status(201).json(createdOrder); 
 });
 
-// @desc    Get logged in user orders
+
+
+// @desc    Lấy đơn hàng từ người dùng đã đăng nhập.
 // @route   GET /api/orders/mine
-// @access  Private
 const getMyOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.user._id }).sort({
-    createdAt: -1,
+    createdAt: -1, 
   });
-  res.json(orders);
+  res.json(orders); 
 });
 
+
+
+// @desc   Lấy đơn hàng theo ID người dùng.
+// @route   GET /api/orders/user/:id
 const getOrdersByUserId = asyncHandler(async (req, res) => {
   const orders = await Order.find({ user: req.params.id }).sort({
-    createdAt: -1,
+    createdAt: -1, 
   });
-  res.json(orders);
+  res.json(orders); 
 });
 
-// @desc    Get order by ID
+
+// @desc    Lấy đơn hàng theo ID.
 // @route   GET /api/orders/:id
-// @access  Private
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
     "user",
     "name email"
   );
-
   if (order) {
-    res.status(200).json(order);
+    res.status(200).json(order); 
   } else {
     res.status(404);
-    throw new Error("Order not found");
+    throw new Error("Đơn hàng không tồn tại."); 
   }
 });
 
-// @desc    Update order to paid
+
+
+// @desc    Cập nhật đơn hàng thành đã thanh toán.
 // @route   PUT /api/orders/:id/pay
-// @access  Private
 const updateOrderToPaid = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) {
-    order.isPaid = true;
-    order.paidAt = Date.now();
-    order.paymentResult = {
+    order.isPaid = true; // Đánh dấu đơn hàng đã được thanh toán
+    order.paidAt = Date.now(); // Thời gian thanh toán
+    order.paymentResult = { // Thông tin thanh toán
       id: req.body.id,
       status: req.body.status,
       update_time: req.body.update_time,
       email_address: req.body.payer.email_address,
     };
-    const updatedOrder = await order.save();
+    const updatedOrder = await order.save(); 
     res.json(updatedOrder);
   } else {
     res.status(404);
-    throw new Error("Order not found");
+    throw new Error("Đơn hàng không tồn tại"); 
   }
 });
 
-// @desc    Update order to delivered
+
+
+// @desc    Cập nhật đơn hàng thành đã giao.
 // @route   PUT /api/orders/:id/deliver
-// @access  Private/Admin
 const updateOrderToDelivered = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id);
   if (order) {
-    order.isDelivered = true;
-    order.deliveredAt = Date.now();
-    const updatedOrder = await order.save();
-    res.json(updatedOrder);
+    order.isDelivered = true; // Đánh dấu đơn hàng đã được giao
+    order.deliveredAt = Date.now(); // Thời gian giao hàng
+    const updatedOrder = await order.save(); 
+    res.json(updatedOrder); 
   } else {
     res.status(404);
-    throw new Error("Order not found");
+    throw new Error("Đơn hàng không tồn tại"); 
   }
 });
 
-// @desc    Get all orders
+
+
+// @desc    Lấy tất cả đơn hàng
 // @route   GET /api/orders
-// @access  Private/Admin
 const getOrders = asyncHandler(async (req, res) => {
   const orders = await Order.find({})
-    .populate("user", "id name")
-    .sort({ createdAt: -1 });
-  res.json(orders);
+    .populate("user", "id name") 
+    .sort({ createdAt: -1 }); 
+  res.json(orders); 
 });
+
 
 export {
   addOrderItems,

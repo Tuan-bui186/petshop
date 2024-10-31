@@ -1,38 +1,38 @@
 import jwt from "jsonwebtoken";
-import asyncHandler from "./asyncHandler.js";
-import User from "../models/userModel.js";
-
+import asyncHandler from "./asyncHandler.js"; 
+import User from "../models/userModel.js"; 
 // Protect routes
 const protect = asyncHandler(async (req, res, next) => {
   let token;
 
-  //read the JWT token from the cookie
+  // Đọc JWT từ cookie
   token = req.cookies.jwt;
 
   if (token) {
     try {
+      // Giải mã token và lấy thông tin người dùng
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       req.user = await User.findById(decoded.userId).select("-password");
-      next();
+      next(); 
     } catch (error) {
       console.error(error);
       res.status(401);
-      throw new Error("Not authorized, token failed");
+      throw new Error("Không được phép, token không hợp lệ.");
     }
   } else {
-    res.status(401);
-    throw new Error("Not authorized, no token");
+    res.status(401); 
+    throw new Error("Không được phép, không có token.");
   }
 });
 
 // Admin middleware
 const admin = (req, res, next) => {
   if (req.user && req.user.isAdmin) {
-    next();
+    next(); 
   } else {
     res.status(401);
-    throw new Error("Not authorized as an admin");
+    throw new Error("Không được phép, bạn không phải là quản trị viên.");
   }
 };
 
-export { protect, admin };
+export { protect, admin }; 
